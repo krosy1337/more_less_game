@@ -63,6 +63,14 @@ body {
     font-size: 30px;
 }
 
+.control {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    max-width: 390px;
+}
+
 .control__button {
     background-color: #b57765;
 
@@ -70,7 +78,7 @@ body {
 
     padding: 10px;
 
-    font-size: 30px;
+    font-size: 25px;
 
     color: #fff;
 
@@ -81,6 +89,8 @@ body {
 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 
+    flex-shrink: 1;
+
     transition: .3s;
 }
 
@@ -88,10 +98,6 @@ body {
     top: 5px;
 
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-}
-
-.control__button + .control__button {
-    margin-left: 20px;
 }
 
 .more {
@@ -105,6 +111,12 @@ body {
     background-color: #3b8192;
 
     border: #457575;
+    outline: #457546;
+}
+
+.eq {
+    background-color: #bdd063;
+
     outline: #457546;
 }
 
