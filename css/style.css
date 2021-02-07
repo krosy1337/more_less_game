@@ -32,7 +32,9 @@ body {
 .ball {
     border-radius: 50%;
 
-    background-color: #b57765;
+    background-color: #a6f0c6;
+
+    border: 5px solid #7ebc97;
 
     padding: 10px;
 
@@ -72,7 +74,7 @@ body {
 }
 
 .control__button {
-    background-color: #b57765;
+    background-color: #be3144;
 
     border: #755345;
 
@@ -101,21 +103,21 @@ body {
 }
 
 .more {
-    background-color: #54a059;
+    background-color: #4e3d53;
 
     border: #457546;
     outline: #457546;
 }
 
 .less {
-    background-color: #3b8192;
+    background-color: #0f1123;
 
     border: #457575;
     outline: #457546;
 }
 
 .eq {
-    background-color: #bdd063;
+    background-color: #a98b98;
 
     outline: #457546;
 }
@@ -130,3 +132,37 @@ body {
     top: 10%;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.rate {
+    max-width: 390px;
+    width: 100%;
+
+    margin: 10px 0;
+}
+
+.rate__input {
+    width: 100%;
+
+    height: 30px;
+}
+
+.rate__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rate__button + .rate__button {
+    margin-left: 20px;
+}
+
+.points {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
