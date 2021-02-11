@@ -25,18 +25,31 @@
 		</div>
 		<div class="rate">
 			<div class="rate__buttons">
-				<button class="control__button rate__button">100</button>
-				<button class="control__button rate__button">10</button>
+				<button class="control__button rate__button"><span class="rate__button-value">min</span></button>
+				<button class="control__button rate__button"><span class="rate__button-value">100</span></button>
+				<button class="control__button rate__button"><span class="rate__button-value">50</span></button>
+				<button class="control__button rate__button"><span class="rate__button-value">max</span></button>
 			</div>
 			<input type="number" class="rate__input">
 		</div>
 		<div class="control">
-			<button class="control__button more">Больше</button>
-			<button class="control__button eq">Равно</button>
-			<button class="control__button less">Меньше</button>
+			<button class="control__button more">
+				<span class="control__button-text">Больше</span>
+				<span class="control__button-kf"></span>
+			</button>
+			<button class="control__button eq">
+				<span class="control__button-text">Равно</span>
+				<span class="control__button-kf">x100</span>
+			</button>
+			<button class="control__button less">
+				<span class="control__button-text">Меньше</span>
+				<span class="control__button-kf"></span>
+			</button>
 		</div>
 		<button class="control__button start">Начать</button>
 	</div>
+	<script src="js/base.js"></script>
+	<script src="plugins/modal.js"></script>
 	<script src="js/script.js"></script>
 </body>
 

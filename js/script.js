@@ -12,19 +12,39 @@ let points = +pointsElement.textContent
 
 let random = Math.round(Math.random()*100)
 
+const endModal = $.modal({
+    width: '300px',
+    footer: [
+        {
+            text: 'Поскрести по сусекам',
+            type: 'blue',
+            handler() {
+                endModal.close()
+                points += 100
+                pointsElement.textContent = points
+            }
+        }
+    ]
+
+})
+
+const endModalHandler = () => {
+
+}
+
+
+endModal.setContent(`<h2>Упс, у вас закончилась валюта</h2>`)
 
 const controlButtonHandler = e => {
-    const target = e.target
+    const target = e.target.closest('.control__button')
 
-    let kefMore = +document.querySelector('.more').textContent.substr(-4)
-    let kefLess = +document.querySelector('.less').textContent.substr(-4)
-
-    console.log(kefMore)
+    let kefMore = +document.querySelector('.more .control__button-kf').textContent.substr(1)
+    let kefLess = +document.querySelector('.less .control__button-kf').textContent.substr(1)
 
     if (target.classList.contains('control__button')) {
 
-        if (+rateInput.value > 0 && +rateInput.value <= points) {
-            rateInput.style.borderColor = "#000"
+        if (+rateInput.value >= 10 && +rateInput.value <= points) {
+            rateInput.style.borderColor = "#8a8a8a"
             const sP = new Promise((resolve, reject) => {
                 let j = 0
                 secondInterval = setInterval(() => {
@@ -79,18 +99,37 @@ const controlButtonHandler = e => {
                         result.style.color = '#985151'
                     }
                 }
+                if (+pointsElement.textContent < 10) {
+                    endModal.open()
+                }
             })
             control.removeEventListener('click', controlButtonHandler)
         } else {
             rateInput.style.borderColor = "#ff0000"
+
+            if (+pointsElement.textContent < 10) {
+                endModal.open()
+            }
         }
     }
 }
 
 const rateButtonsHandler = e => {
-    let target = e.target.closest('.rate__button')
+    let target = e.target.querySelector('.rate__button-value')
 
-    rateInput.value = target.textContent
+    if (!target) {
+        target = e.target
+    }
+
+    if (target) {
+        if (target.textContent === 'max') {
+            rateInput.value = points
+        } else if (target.textContent === 'min') {
+            rateInput.value = 10
+        } else {
+            rateInput.value = target.textContent
+        }
+    }
 }
 
 startButton.addEventListener('click', () => {
@@ -121,8 +160,8 @@ startButton.addEventListener('click', () => {
     p.then(() => {
         bigBall.textContent = random
 
-        document.querySelector('.more').textContent = 'Больше' + kefMore
-        document.querySelector('.less').textContent = 'Меньше' + kefLess
+        document.querySelector('.more .control__button-kf').textContent = 'x' + kefMore
+        document.querySelector('.less .control__button-kf').textContent = 'x' + kefLess
 
         rateButtons.forEach(item => {
             item.addEventListener('click', rateButtonsHandler)
