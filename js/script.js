@@ -63,6 +63,8 @@ const controlButtonHandler = e => {
             points -= +rateInput.value
             pointsElement.textContent = points
 
+            console.log(points)
+
             sP.then(() => {
                 random = Math.floor(Math.random() * (100 - 1+ 1)) + 1
                 smallBall.textContent = random
@@ -70,7 +72,8 @@ const controlButtonHandler = e => {
                     if (+smallBall.textContent > +bigBall.textContent) {
                         result.textContent = "Победа"
                         result.style.color = '#6bb560'
-                        points += +rateInput.value*kefMore + +pointsElement.textContent
+                        console.log(+rateInput.value*kefMore)
+                        points += +rateInput.value*kefMore
                         points.toFixed(2)
                         pointsElement.textContent = points
 
@@ -82,7 +85,8 @@ const controlButtonHandler = e => {
                     if (+smallBall.textContent < +bigBall.textContent) {
                         result.textContent = "Победа"
                         result.style.color = '#6bb560'
-                        points += +rateInput.value*kefLess.toFixed(2)
+                        points += +rateInput.value*kefLess
+                        points.toFixed(2)
                         pointsElement.textContent = points
                     } else {
                         result.textContent = "Поражение"
@@ -92,7 +96,8 @@ const controlButtonHandler = e => {
                     if (+smallBall.textContent === +bigBall.textContent) {
                         result.textContent = "Победа"
                         result.style.color = '#6bb560'
-                        points += Math.round(+rateInput.value*100)
+                        points += (+rateInput.value*100)
+                        points.toFixed(2)
                         pointsElement.textContent = points
                     } else {
                         result.textContent = "Поражение"
@@ -102,6 +107,7 @@ const controlButtonHandler = e => {
                 if (+pointsElement.textContent < 10) {
                     endModal.open()
                 }
+                startButton.addEventListener('click', startButtonHandler)
             })
             control.removeEventListener('click', controlButtonHandler)
         } else {
@@ -126,13 +132,25 @@ const rateButtonsHandler = e => {
             rateInput.value = points
         } else if (target.textContent === 'min') {
             rateInput.value = 10
+        } else if (target.textContent === 'x/2') {
+            if (Math.floor(rateInput.value / 2) >= 10) {
+                rateInput.value = Math.floor(rateInput.value / 2)
+            } else {
+                rateInput.value = 10
+            }
+        } else if (target.textContent === '2x') {
+            if (rateInput.value * 2 <= points) {
+                rateInput.value = rateInput.value * 2
+            } else {
+                rateInput.value = points
+            }
         } else {
             rateInput.value = target.textContent
         }
     }
 }
 
-startButton.addEventListener('click', () => {
+const startButtonHandler = () => {
     random = Math.floor(Math.random() * (98 - 2 + 1)) + 2
 
     let kefMore = 1/((100-random)/100)
@@ -168,8 +186,9 @@ startButton.addEventListener('click', () => {
         })
 
         control.addEventListener('click', controlButtonHandler)
+        startButton.removeEventListener('click', startButtonHandler)
     })
+}
 
-
-})
+startButton.addEventListener('click', startButtonHandler)
 
