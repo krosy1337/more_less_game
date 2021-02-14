@@ -63,8 +63,6 @@ const controlButtonHandler = e => {
             points -= +rateInput.value
             pointsElement.textContent = points
 
-            console.log(points)
-
             sP.then(() => {
                 random = Math.floor(Math.random() * (100 - 1+ 1)) + 1
                 smallBall.textContent = random
@@ -72,7 +70,6 @@ const controlButtonHandler = e => {
                     if (+smallBall.textContent > +bigBall.textContent) {
                         result.textContent = "Победа"
                         result.style.color = '#6bb560'
-                        console.log(+rateInput.value*kefMore)
                         points += +rateInput.value*kefMore
                         points.toFixed(2)
                         pointsElement.textContent = points
