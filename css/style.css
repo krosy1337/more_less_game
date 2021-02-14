@@ -11,6 +11,8 @@ h1 {
 body {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     background-color: #f6f6f6;
+
+    margin: 0;
 }
 
 .wrapper {
@@ -26,6 +28,8 @@ body {
     margin: 0 auto;
 
     position: relative;
+
+    padding: 0 5px;
 }
 
 .balls {
@@ -33,6 +37,11 @@ body {
     align-items: flex-end;
 
     margin-bottom: 30px;
+
+    justify-content: space-between;
+
+    max-width: 375px;
+    width: 100%;
 }
 
 .ball {
@@ -51,10 +60,6 @@ body {
     justify-content: center;
 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.ball + .ball {
-    margin-left: 30px;
 }
 
 .big-ball {
@@ -201,11 +206,10 @@ input::-webkit-inner-spin-button {
 .rate__buttons {
     display: flex;
     align-items: center;
-    justify-content: center;
-}
+    justify-content: space-between;
 
-.rate__button + .rate__button {
-    margin-left: 20px;
+    max-width: 375px;
+    width: 100%;
 }
 
 .points {
